@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VDO BY ITCMTC-Three</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #overlay {
+        position: absolute;
+        top:0; left:0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        text-align: center;
+        animation: fadeIn 1s forwards;
+    }
+
+    #overlay h1 {
+        font-size: 3em;
+        background: linear-gradient(90deg, #ff0055, #ffcc00, #00ffdd, #ff00ff);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientShift 3s ease infinite;
+    }
+
+    #overlay span {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #aaa;
+    }
+
+    .countdown {
+        font-size: 6em;
+        background: linear-gradient(90deg, #ff0000, #ffdd00, #00ff00, #00ffff, #ff00ff);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: scaleUp 1s ease-in-out, gradientShift 3s ease infinite;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* เต็มจอ */
+        display: none; /* ซ่อนก่อนเริ่มเล่น */
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes scaleUp {
+        0% { transform: scale(0.3); opacity: 0; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+</style>
+</head>
+<body>
+
+<div id="overlay">
+    <h1>VDO BY ITCMTC-Three</h1>
+    <span>กำลังเตรียมวิดีโอ...</span>
+</div>
+
+<video id="videoPlayer" controls>
+    <source src="VDO.mp4" type="video/mp4">
+    เบราว์เซอร์ของคุณไม่รองรับวิดีโอ HTML5
+</video>
+
+<script>
+const overlay = document.getElementById('overlay');
+const video = document.getElementById('videoPlayer');
+
+// แสดงข้อความประมาณ 2 วินาที
+setTimeout(() => {
+    overlay.innerHTML = ''; // ล้างข้อความเดิม
+    let countdownNumber = 3;
+
+    const countdownEl = document.createElement('div');
+    countdownEl.classList.add('countdown');
+    countdownEl.textContent = countdownNumber;
+    overlay.appendChild(countdownEl);
+
+    const interval = setInterval(() => {
+        countdownNumber--;
+        if (countdownNumber >= 0) {
+            countdownEl.textContent = countdownNumber;
+            countdownEl.style.animation = 'scaleUp 1s ease-in-out, gradientShift 3s ease infinite';
+        } else {
+            clearInterval(interval);
+            overlay.style.display = 'none';
+            video.style.display = 'block';
+            video.play();
+        }
+    }, 1000);
+
+}, 2000);
+</script>
+
+</body>
+</html>
