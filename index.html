@@ -33,7 +33,7 @@
     }
 
     #overlay h1 {
-        font-size: 3em;
+        font-size: 2.5em;
         background: linear-gradient(90deg, #ff0055, #ffcc00, #00ffdd, #ff00ff);
         background-size: 400% 400%;
         -webkit-background-clip: text;
@@ -43,13 +43,13 @@
 
     #overlay span {
         display: inline-block;
-        margin-top: 20px;
-        font-size: 1.5em;
+        margin-top: 15px;
+        font-size: 1.2em;
         color: #aaa;
     }
 
     .countdown {
-        font-size: 6em;
+        font-size: 4em;
         background: linear-gradient(90deg, #ff0000, #ffdd00, #00ff00, #00ffff, #ff00ff);
         background-size: 400% 400%;
         -webkit-background-clip: text;
@@ -58,12 +58,13 @@
     }
 
     video {
-        width: 90%;       /* ปรับขนาดให้พอดีมือถือ */
-        max-width: 600px; /* ไม่เกินขนาดหน้าจอใหญ่ */
-        height: auto;     /* รักษาอัตราส่วน */
-        border-radius: 15px; /* มุมโค้งนิดหน่อย */
-        display: none;    /* ซ่อนก่อนเริ่มเล่น */
-        box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        max-width: 95%;
+        max-height: 60vh; /* ไม่เต็มจอ */
+        object-fit: contain; /* รักษาสัดส่วน */
+        display: none; /* ซ่อนก่อนเริ่มเล่น */
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.5);
     }
 
     @keyframes fadeIn {
