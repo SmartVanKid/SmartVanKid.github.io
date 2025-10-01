@@ -58,10 +58,12 @@
     }
 
     video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* เต็มจอ */
-        display: none; /* ซ่อนก่อนเริ่มเล่น */
+        width: 90%;       /* ปรับขนาดให้พอดีมือถือ */
+        max-width: 600px; /* ไม่เกินขนาดหน้าจอใหญ่ */
+        height: auto;     /* รักษาอัตราส่วน */
+        border-radius: 15px; /* มุมโค้งนิดหน่อย */
+        display: none;    /* ซ่อนก่อนเริ่มเล่น */
+        box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
     @keyframes fadeIn {
